@@ -8,17 +8,19 @@ class HomePage extends StatelessWidget {
     final bloc=Provider.of(context);
     return Scaffold(
 
-      appBar: AppBar(
-        title: Column(
+      appBar: AppBar(title: Text('Home'),),
+        
+        body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Email: ${bloc.email}'),
+            Divider(),
             Text('Password: ${bloc.password}')
           ],
         ),
 
-      ),
-    );
+      );
 
   }
 }
