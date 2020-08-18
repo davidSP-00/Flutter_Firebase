@@ -4,17 +4,32 @@ import 'package:formvalidation/src/pages/home_page.dart';
 import 'package:formvalidation/src/pages/login_page.dart';
 import 'package:formvalidation/src/pages/producto_page.dart';
 import 'package:formvalidation/src/pages/registro_page.dart';
+import 'package:formvalidation/src/preferencias_usuario/preferencias_usuario.dart';
  
-void main() => runApp(MyApp());
+void main() async{
+  
+  final prefs=new PreferenciasUsuario();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await prefs.initPref();
+
+  runApp(MyApp());
+  
+  } 
  
 class MyApp extends StatelessWidget {
+final prefs=new PreferenciasUsuario();
+
+ 
+
   @override
   Widget build(BuildContext context) {
+     print(prefs.token);
     return Provider(
       child:MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'login',
+      initialRoute: 'home',
       routes:{
         'login':(BuildContext context)=>LoginPage(),
         'home':(BuildContext context)=>HomePage(),

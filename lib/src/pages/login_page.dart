@@ -149,6 +149,8 @@ _login(BuildContext context,LoginBloc bloc){
   
   usuarioProvider.login(bloc.email, bloc.password);
 
+
+
   //Navigator.pushReplacementNamed(context, 'home');
 }
 
