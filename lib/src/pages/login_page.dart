@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:formvalidation/src/bloc/provider.dart';
+import 'package:formvalidation/src/providers/usuario_provider.dart';
 
 
 class LoginPage extends StatelessWidget {
+
+
+  final usuarioProvider=new UsuarioProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +62,9 @@ return SingleChildScrollView(
           ],
         ),
       ),
-      Text('¿Olvidoo la contraseña?')
+      FlatButton(onPressed: ()=>Navigator.pushReplacementNamed(context, 'registro'),
+      child: Text('Crear una nueva cuenta')),
+      SizedBox(height: 100,)
     ],
   ),
 );
@@ -139,12 +145,11 @@ Widget _crearBoton(LoginBloc bloc){
 
 
 _login(BuildContext context,LoginBloc bloc){
-  print('=========');
-  print('Email: ${bloc.email}');
-  print('Password: ${bloc.password}');
-  print('=========');
+  
+  
+  usuarioProvider.login(bloc.email, bloc.password);
 
-  Navigator.pushReplacementNamed(context, 'home');
+  //Navigator.pushReplacementNamed(context, 'home');
 }
 
 
