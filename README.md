@@ -1,7 +1,8 @@
-# formvalidation
+# Flutter con Firebase
 
 A new Flutter project.
-Pruebas del Patron bloc
+Pruebas del Patron bloc.
+Subida de imagenes a traves de API REST de Firebase y cloudinary
 
 ## Getting Started
 
