@@ -4,10 +4,11 @@ import 'package:formvalidation/src/bloc/provider.dart';
 import 'package:formvalidation/src/providers/usuario_provider.dart';
 
 
-class LoginPage extends StatelessWidget {
+class RegistroPage extends StatelessWidget {
+
+final usuarioProvider=new UsuarioProvider();
 
 
-  final usuarioProvider=new UsuarioProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +53,7 @@ return SingleChildScrollView(
         ),
         child: Column(
           children: [
-            Text('Ingreso',style:TextStyle(fontSize: 20.0)),
+            Text('Crear cuenta',style:TextStyle(fontSize: 20.0)),
             SizedBox(height: 30.0),
             _crearEmail(bloc),
             SizedBox(height: 30.0),
@@ -62,8 +63,8 @@ return SingleChildScrollView(
           ],
         ),
       ),
-      FlatButton(onPressed: ()=>Navigator.pushReplacementNamed(context, 'registro'),
-      child: Text('Crear una nueva cuenta')),
+      FlatButton(onPressed: ()=>Navigator.pushReplacementNamed(context, 'login'),
+      child: Text('¿Ya tiene una cuenta? Login')),
       SizedBox(height: 100,)
     ],
   ),
@@ -129,7 +130,7 @@ Widget _crearBoton(LoginBloc bloc){
       padding: EdgeInsets.symmetric(horizontal: 80,vertical: 15),
       child: Text('Ingresar'),
     ),
-    onPressed: snapshot.hasData?()=>_login(context,bloc):null,
+    onPressed: snapshot.hasData?()=>_register(context,bloc):null,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(5)
     ),
@@ -144,14 +145,9 @@ Widget _crearBoton(LoginBloc bloc){
 }
 
 
-_login(BuildContext context,LoginBloc bloc){
+_register(BuildContext context,LoginBloc bloc){
   
-  
-  usuarioProvider.login(bloc.email, bloc.password);
-
-
-
-  Navigator.pushReplacementNamed(context, 'home');
+  usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
 }
 
 
